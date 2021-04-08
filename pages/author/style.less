@@ -1,0 +1,258 @@
+// @import '../../assets/style/theme.less';
+
+.page-author{
+    padding-bottom: 30px;
+    .modal-confirm-title{
+        display: flex;
+        align-items: center;
+        .icon-chenggong{
+            color: #52c41a;
+            font-size: 24px;
+            margin-right: 5px;
+        }
+    }
+    .author-list{
+        .list-header{
+            height: 60px;
+            background-color: #FAFAFA;
+            border-bottom: 1px solid #E9E9E9;
+            .header-item{
+                height: 60px;
+                line-height: 60px;
+                width: 130px;
+                // padding: 0 8px;
+                color: rgba(0,0,0,0.85);
+                &:nth-child(1){
+                    width: 460px;
+                    text-align: left;
+                    padding-left: 20px;
+                    cursor: text;
+                }
+                &.fans{
+                    width: 160px;
+                }
+                &:last-child{
+                    width: 180px;
+                    text-align: right;
+                    padding-right: 20px;
+                    cursor: text;
+                }
+                >span{cursor: pointer;}
+                .table-sorter{
+                    display: inline-flex;
+                    -webkit-box-orient: vertical;
+                    -webkit-box-direction: normal;
+                    flex-direction: column;
+                    -webkit-box-align: center;
+                    align-items: center;
+                    margin-left: 3px;
+                    width: 10px;
+                    cursor: pointer;
+                    .iconfont{
+                        width: 12px;
+                        height: 10px;
+                        font-size: 11px;
+                        text-align: center;
+                        line-height: 10px;
+                        color: #b1b1b1;
+                    }
+                    &.desc{
+                        .icon-sorter-desc{
+                            color: var(--primary-color);
+                        }
+                    }
+                    &.asc{
+                        .icon-sorter-asc{
+                            color: var(--primary-color);
+                        }
+                    }
+                }
+            }
+        }
+        .list-warp{
+            .author-item{
+                border-bottom: 1px solid #E9E9E9;
+                padding: 10px 0px;
+                // &:hover{
+                //     background-color: #fafafa;
+                // }
+                .author-info{
+                    display: flex;
+                    width: 460px;
+                    padding:0 20px;
+                    .logo{
+                        width: 60px;
+                        height: 60px;
+                        margin-right: 10px;
+                        position: relative;
+                        >img{
+                            display: block;
+                            width: 60px;
+                            height: 60px;
+                            border-radius: 100%;
+                        }
+                        >span{
+                            width: 16px;
+                            height: 16px;
+                            text-align: center;
+                            line-height: 16px;
+                            border-radius: 100%;
+                            position: absolute;
+                            right: 0;
+                            bottom: 0;
+                            background-color: #fff;
+                            .iconfont{
+                                &.icon-female{
+                                    color: #fc14be;
+                                }
+                                &.icon-male{
+                                    color: #166eea;
+                                }
+                            }
+                        }
+                    }
+                    .info{
+                        flex: 1;
+                        text-align: left;
+                        .name{
+                            .nickname{
+                                cursor: pointer;
+                                font-size: 16px;
+                                color: rgba(0,0,0);
+                                &:hover{
+                                    color: var(--primary-color);
+                                }
+                            }
+                            .auth_intro{
+                                font-size: 14px;
+                                color: rgba(0,0,0,0.65);
+                                margin-left: 10px;
+                                &.auth_blue{
+                                    .iconfont{
+                                        color: rgb(22,110,234);
+                                    }
+                                }
+                                .iconfont{
+                                    color: var(--primary-color);
+                                }
+                            }
+                        }
+                        .address{
+                            padding: 5px 0;
+                            font-size: 12px;
+                            color: rgba(0,0,0,0.6);
+                            .addr{
+                                margin-right: 10px;
+                                .iconfont{
+                                    font-size: 12px;
+                                    margin-right: 5px;
+                                }
+                            }
+                            .rank{
+                                background-color: var(--primary-color);
+                                height: 18px;
+                                line-height: 18px;
+                                border-radius: 2px;
+                                color: #fff;
+                                font-size: 12px;
+                                padding: 0 5px;
+                            }
+                        }
+                        .desc{
+                            height: 18px;
+                            line-height: 18px;
+                            overflow: hidden;
+                            font-size: 14px;
+                            color: rgba(0,0,0,0.65);
+                            margin-bottom: 5px;
+                            .desc-text{
+                                display: block;
+                                height: 18px;
+                                line-height: 18px;
+                                overflow: hidden;
+                            }
+                        }
+                        .lately{
+                            width: 100%;
+                            height: 20px;
+                            position: relative;
+                            padding-left: 70px;
+                            span.label{
+                                position: absolute;
+                                width: 70px;
+                                height: 20px;
+                                line-height: 20px;
+                                left: 0;
+                                top: 0;
+                                font-size: 14px;
+                                color: rgba(0,0,0,0.65);
+                            }
+                            .content{
+                                display: inline-block;
+                                padding-right: 80px;
+                                position: relative;
+                                .title{
+                                    color: rgba(0,0,0,0.85);
+                                    height: 20px;
+                                    line-height: 20px;
+                                    overflow: hidden;
+                                }
+                                .at{
+                                    max-width: 90px;
+                                    min-width: 50px;
+                                    height: 20px;
+                                    line-height: 20px;
+                                    text-align: right;
+                                    position: absolute;
+                                    top: 0;
+                                    right: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+                .anthor-fans,.anthor-works,.anthor-praise,.anthor-index{
+                    padding: 0 12px 0 8px;
+                    text-align: right;
+                    font-size: 16px;
+                    font-weight: 500;
+                }
+                .anthor-fans{
+                    width: 160px;
+                }
+                .anthor-works,.anthor-praise,.anthor-index{
+                    width: 130px;
+                }
+                .anthor-fans,.anthor-works,.anthor-praise{
+                    color: rgba(0,0,0,0.85);
+                }
+                .anthor-index{
+                    color: #FF6146;
+                }
+                .anthor-action{
+                    width: 180px;
+                    padding: 0 8px;
+                    padding-right: 20px;
+                    .link-a{
+                        font-size: 14px;
+                        color: #FF6146;
+                        cursor: pointer;
+                        .iconfont{
+                            font-size: 16px;
+                        }
+                        // &:hover{
+                        //     color: var(--primary-color);
+                        // }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.screen-list-select-option{
+    font-size: 14px !important;
+}
+.page-screen-cascader-popup{
+    font-size: 14px !important;
+}
