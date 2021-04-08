@@ -16,8 +16,12 @@ module.exports = withLess(
       javascriptEnabled: true,
       modifyVars: themeVariables // make your antd custom effective
     },
-    webpack(config) {
-      return config;
+    webpack: (config) => {
+      config.resolve.alias={
+        ...config.resolve.alias,
+        "@/*": path.resolve(__dirname, "./"),
+      }
+      return config
     }
   }
 )
