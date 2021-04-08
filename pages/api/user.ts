@@ -1,63 +1,72 @@
-import fetch from '../../utils/fetch'
+import fetch from "@/utils/fetch";
 
-interface ILoginBody {
-  name: string
-  password: string
-  remember?: boolean
-  stamp?: string
-}
-export function getUser(body?: ILoginBody | null) {
-  return fetch({
-    url: '/login',
-    body
-  })
-}
 
-export function postExit(body?: ILoginBody) {
-  return fetch({
-    url: '/login',
-    body
-  })
-}
+/**
+ * @link
+ *
+ * @desc 手机号认证
+ *
+ * @param {ILoginForm} form 认证参数
+ */
+export function postAuth(form: any): Promise<any> {
+  const formObj = { ...form };
 
-export function postAuthorInclude(body?: ILoginBody) {
+  // eslint-disable-next-line dot-notation
+
   return fetch({
-    url: '/login',
-    body
-  })
+    url: "/api/auth/bindMobile",
+    method: "POST",
+    body: {
+      ...formObj,
+    },
+  });
 }
 
-export function postFavorite(body?: ILoginBody) {
+/**
+ * 获取验证码
+ */
+export function getVerify(m: string | number): Promise<any> {
   return fetch({
-    url: '/login',
-    body
-  })
+    url: "/api/auth/sendCode",
+    method: "POST",
+    body: {
+      mobile: m,
+    },
+  });
 }
 
-export function delFavorite(body?: ILoginBody) {
+/**
+ * 用户信息
+ */
+export function getUser(): Promise<any> {
   return fetch({
-    url: '/login',
-    body
-  })
+    url: "/api/center/info",
+    method: "GET",
+  });
 }
 
-export function getCategory(body?: ILoginBody) {
+/**
+ * @link
+ *
+ * @desc 退出登陆
+ */
+export function postExit(): Promise<any> {
   return fetch({
-    url: '/login',
-    body
-  })
+    url: "/api/auth/logout",
+    method: "POST",
+  });
 }
 
-export function getRegion(body?: ILoginBody) {
+ 
+ /**
+  * @param params 
+  * 
+  * @desc 获取二维码
+  */
+export function getQrcode(params?:any): Promise<any> {
   return fetch({
-    url: '/login',
-    body
-  })
-}
-
-export function getList(body?: ILoginBody) {
-  return fetch({
-    url: '/login',
-    body
-  })
+    method: "GET",
+    url: "/api/auth/qrcode",
+    params
+  });
 }

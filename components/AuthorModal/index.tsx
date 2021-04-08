@@ -27,20 +27,20 @@ const AuthorModal:React.FC<any> = (props:any):JSX.Element => {
     }
     let onSearch = (value:any) => {
         setLoad(true)
-        postAuthorSearch({keyword: value}).then(res => {
-            setLoad(false)
-            if(res.code == 200){
-                if(res.data.length > 0){
-                    res.data.forEach((item:any) => {
-                        item.load = false
-                    })
-                    setList(res.data)
-                } else {
-                    setList([])
-                    message.warning('未搜索到相关记录')
-                }
-            }
-        })
+        // postAuthorSearch({keyword: value}).then(res => {
+        //     setLoad(false)
+        //     if(res.code == 200){
+        //         if(res.data.length > 0){
+        //             res.data.forEach((item:any) => {
+        //                 item.load = false
+        //             })
+        //             setList(res.data)
+        //         } else {
+        //             setList([])
+        //             message.warning('未搜索到相关记录')
+        //         }
+        //     }
+        // })
     }
     let handleAuthorPost = (index:number) => {
         let [...arr]:any = list
@@ -48,21 +48,21 @@ const AuthorModal:React.FC<any> = (props:any):JSX.Element => {
         arr[index].load = true;
         setList(arr)
         console.log('item',item)
-        postAuthorInclude({
-            keyword: item.nickname,
-            username: item.username
-        }).then(res => {
-            arr[index].load = false;
-            if(res.code == 200){
-                arr[index].isMark = 1;
-                message.success('收录成功')
-            } else {
-                message.error(res.message)
-            }
-            let newArr = JSON.parse(JSON.stringify(arr))
-            setList(newArr)
-            // console.log('sss',arr)
-        })
+        // postAuthorInclude({
+        //     keyword: item.nickname,
+        //     username: item.username
+        // }).then(res => {
+        //     arr[index].load = false;
+        //     if(res.code == 200){
+        //         arr[index].isMark = 1;
+        //         message.success('收录成功')
+        //     } else {
+        //         message.error(res.message)
+        //     }
+        //     let newArr = JSON.parse(JSON.stringify(arr))
+        //     setList(newArr)
+        //     // console.log('sss',arr)
+        // })
     }
     let listContent = <>{list.map((item:any,index:number) => (
         <div key={item.username} className="author-modal-list-item flex flex-item-conter">

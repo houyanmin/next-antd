@@ -1,7 +1,7 @@
 import React from "react";
 import { GetStaticProps } from 'next'
 import { HeartTwoTone, RightOutlined } from '@ant-design/icons';
-import PageSearch from "../components/PageSearch/index";
+import PageSearch from "@/components/PageSearch/index";
 import Head from 'next/head'
 import './Home.module.less'
 

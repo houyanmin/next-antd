@@ -3,8 +3,8 @@ import { useLocation, useHistory, Link } from 'react-router-dom';
 import { GetStaticProps } from 'next'
 // import QueryString from 'query-string';
 import { Form, Select, Cascader, Tooltip, Pagination, message, Checkbox, Modal, Spin, Empty, Button } from 'antd';
-import PageSearch from '../../components/PageSearch/index';
-import PageAuthTips from '../../components/PageAuthTips';
+import PageSearch from '@/components/PageSearch/index';
+import PageAuthTips from '@/components/PageAuthTips';
 import { getCategory, getRegion, getList } from '../api/author';
 // import { useStore } from '@stores';
 // import Cookies from 'js-cookie';

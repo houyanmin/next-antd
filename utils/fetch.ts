@@ -1,11 +1,12 @@
 import isomorphicFetch from 'isomorphic-fetch'
+import { queryParams } from '@/utils/util'
 
 type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
 
 // ⚠️注意：所有的body必须是json对象
-const BASE_URL = '' //"http://localhost:3000";
+const BASE_URL = 'https://va-api.khtuan.com' //"http://localhost:3000";
 
-function initRequest(url: string, init?: RequestInit): [string, RequestInit] {
+function initRequest(url: string, params:{ [key: string]: any } | undefined = {}, init?: RequestInit): [string, RequestInit] {
   let headers = {}
 
   // 判断请求是不是相对路径
@@ -23,7 +24,7 @@ function initRequest(url: string, init?: RequestInit): [string, RequestInit] {
     )
   }
 
-  return [url, { credentials: 'include', ...init, headers }]
+  return [url+queryParams(params), { credentials: 'include', ...init, headers }]
 }
 
 export type IFetchRquest = {
@@ -31,6 +32,7 @@ export type IFetchRquest = {
   method?: Method
   body?: { [key: string]: any } | undefined
   init?: Omit<RequestInit, 'body' | 'method'>
+  params?: { [key: string]: any } | undefined
 }
 
 /**
@@ -46,7 +48,7 @@ export type IFetchRquest = {
  * @returns fetch json data
  */
 async function fetch(rquest: IFetchRquest): Promise<any> {
-  const [url, init] = initRequest(rquest.url, {
+  const [url, init] = initRequest(rquest.url, rquest.params,{
     ...rquest.init,
     method: rquest.method || 'GET',
     body: rquest.body ? JSON.stringify(rquest.body) : null

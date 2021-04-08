@@ -1,64 +1,103 @@
-import fetch from '../../utils/fetch'
+import fetch from '@/utils/fetch';
 
-interface ILoginBody {
-  name: string
-  password: string
-  remember?: boolean
-  stamp?: string
+export function getCategory(params?: any): Promise<any> {
+    return fetch({
+        method: 'GET',
+        url: '/api/data/category',
+        params
+    });
 }
 
-export function fetchLogin(body?: ILoginBody) {
-  return fetch({
-    url: '/login',
-    body
-  })
+export function getRegion(params?: any): Promise<any> {
+    return fetch({
+        method: 'GET',
+        url: '/api/data/region',
+        params
+    });
 }
 
-export function postAuthorSearch(body?: ILoginBody) {
-  return fetch({
-    url: '/login',
-    body
-  })
+export function getList(params?: any): Promise<any> {
+    return fetch({
+        method: 'GET',
+        url: '/api/data/channel',
+        params
+    });
 }
 
-export function postAuthorInclude(body?: ILoginBody) {
-  return fetch({
-    url: '/login',
-    body
-  })
+
+export function postFavorite(data?: any): Promise<any> {
+    return fetch({
+        method: 'POST',
+        url: '/api/data/favorite',
+        body: data
+    });
 }
 
-export function postFavorite(body?: ILoginBody) {
-  return fetch({
-    url: '/login',
-    body
-  })
+export function delFavorite(data?: any): Promise<any> {
+    return fetch({
+        method: 'DELETE',
+        url: '/api/data/favorite',
+        body: data
+    });
 }
 
-export function delFavorite(body?: ILoginBody) {
-  return fetch({
-    url: '/login',
-    body
-  })
+export function getChannelDetail(params?: any): Promise<any> {
+    return fetch({
+        method: 'GET',
+        url: '/api/data/channelDetail',
+        params
+    });
 }
 
-export function getCategory(body?: ILoginBody) {
-  return fetch({
-    url: '/login',
-    body
-  })
+// 收录搜索
+export function postAuthorSearch(params?: any): Promise<any> {
+    return fetch({
+        method: 'POST',
+        url: '/api/data/search',
+        params
+    })
+}
+// 添加收录
+export function postAuthorInclude(params?: any): Promise<any> {
+    return fetch({
+        method: 'POST',
+        url: '/api/data/channelInclude',
+        params
+    })
 }
 
-export function getRegion(body?: ILoginBody) {
-  return fetch({
-    url: '/login',
-    body
-  })
+// 图表
+export function getAuthorData(params?:any):Promise<any> {
+    return fetch({
+        method: 'GET',
+        url: '/api/data/channelDetailGraphic',
+        params
+    })
 }
 
-export function getList(body?: ILoginBody) {
-  return fetch({
-    url: '/login',
-    body
-  })
+// 视频
+export function getProductionData(params?:any):Promise<any> {
+    return fetch({
+        method: 'GET',
+        url: '/api/data/channelFeedTrends',
+        params
+    })
+}
+
+// 博主信息更新
+export function postAuthorRefresh(data?:any):Promise<any> {
+    return fetch({
+        method: 'POST',
+        url: '/api/data/refresh',
+        body: data
+    })
+}
+
+// 申请修改分类
+export function putAuthorCategory(data?:any):Promise<any> {
+    return fetch({
+        method: 'PUT',
+        url: '/api/data/category',
+        body: data
+    })
 }
