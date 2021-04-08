@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Input, message } from 'antd';
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 import './style.less'
 import { useHistory } from 'react-router-dom';
-import AuthorModal from '@/components/AuthorModal';
+import AuthorModal from '../../components/AuthorModal';
 
 const { Search } = Input;
 
@@ -33,12 +33,12 @@ const PageSearch:React.FC<any> = (props:any):JSX.Element => {
     // 收录
     let [show,setShow] = useState(false);
     let handleShowModal = () => {
-        const token = Cookies.get('token');
-        if(token) {
-            setShow(true)
-        } else {
-            message.warning(<span>登录后使用此功能，<a href="/login">去登录</a></span>)
-        }
+        // const token = Cookies.get('token');
+        // if(token) {
+        //     setShow(true)
+        // } else {
+        //     message.warning(<span>登录后使用此功能，<a href="/login">去登录</a></span>)
+        // }
     }
     let onCallback = () => {
         setShow(false)

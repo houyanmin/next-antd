@@ -3,8 +3,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { NextComponentType } from 'next'
 import { AppContext, AppProps } from 'next/app'
 import { ConfigProvider } from 'antd'
-import { Provider } from 'react-redux'
-import { useStore } from '../store/store'
+import { StoreProvider } from '@/stores';
 import "../styles/globals.less";
 import 'antd/dist/antd.less'
 import zhCN from 'antd/lib/locale/zh_CN';
@@ -33,7 +32,6 @@ const AppCom: NextComponentType<
   ExtendedAppProps<TProps, TAppProps>
 > = ({ Component, appProps }) => {
   // redux store init state
-  const store = useStore(appProps.initial_redux_state)
   // const history = useHistory();
   // const location = useLocation();
   // const { userStore } = useStore(appProps.initial_redux_state);
@@ -78,7 +76,7 @@ const AppCom: NextComponentType<
 
   return (
     <ConfigProvider locale={zhCN}>
-      <Provider store={store}>
+      <StoreProvider>
         <div className="warp-layout">
           <HeaderComp isLogin={isLogin} {...userInfo}/>
           <div className="warp-layout-content">
@@ -86,7 +84,7 @@ const AppCom: NextComponentType<
           </div>
           <FooterComp />
         </div>
-      </Provider>
+      </StoreProvider>
     </ConfigProvider>
   )
 }

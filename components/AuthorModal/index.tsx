@@ -1,6 +1,6 @@
 import {Modal, Input, Button, message} from 'antd';
 import React, {useState, useEffect} from 'react';
-import {postAuthorSearch,postAuthorInclude} from '@/api/author'
+import {postAuthorSearch,postAuthorInclude} from '../../pages/api/author'
 import './style.less'
 const { Search } = Input;
 
