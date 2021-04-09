@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Input, Button, message, Modal } from "antd";
 import emitEv from '@/utils/events'
-import { postAuth, getVerify } from '@/api/user'
+import { postAuth, getVerify } from '@/pages/api/user'
 import './style.less'
 
 var rockon: any;
