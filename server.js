@@ -47,7 +47,6 @@ app.prepare()
             if (err) {
                 throw err
             }
-            console.log(`> Ready on http://localhost:${port}`)
             const serverUrl = `http://localhost:${port}`;
             console.log(`> Ready on ${serverUrl}`);
             // 开发环境自动启动

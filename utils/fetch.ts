@@ -1,5 +1,6 @@
 import isomorphicFetch from 'isomorphic-fetch'
 import { queryParams } from '@/utils/util'
+import Cookies from 'js-cookie';
 
 type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
 
@@ -13,16 +14,16 @@ function initRequest(url: string, params:{ [key: string]: any } | undefined = {}
   if (!/^http[s]?:|^\/\//.test(url)) {
     url = BASE_URL + url
   }
+  // if (init && init.headers) {
 
-  if (init && init.headers) {
+    const token = Cookies.get('token');
+console.log(token)
+
     headers = Object.assign(
-      {
-        Authorization: `Bearer `, // 带上token的地方
-        'Content-Type': 'application/json;charset=utf-8'
-      },
+      token ? {Authorization: `Bearer ${token ? token : ''}`, 'Content-Type': 'application/json;charset=utf-8'} : {},
       headers
     )
-  }
+  // }
 
   return [url+queryParams(params), { credentials: 'include', ...init, headers }]
 }

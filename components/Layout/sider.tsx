@@ -1,16 +1,41 @@
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import "./style.less";
 
 const Sider: React.FC<any> = (): JSX.Element => {
+  const router = useRouter()
+  const nav = [
+    {
+      href: '/',
+      name: '首页'
+    },
+    {
+      href: '/author',
+      name: '视频号搜索'
+    },
+    {
+      href: '/rank',
+      name: '视频号榜单'
+    },
+    {
+      href: '/video',
+      name: '热门视频'
+    },
+    {
+      href: '/topic',
+      name: '热门话题'
+    },
+    {
+      href: '/live',
+      name: '直播'
+    }
+  ]
   return (
     <div className="sider-menu">
-      <Link href="/"><a className="menu-item">首页</a></Link>
-      <Link href="/author"><a className="menu-item">视频号搜索</a></Link>
-      <Link href="/rank"><a className="menu-item">视频号榜单</a></Link>
-      <Link href="/video"><a className="menu-item">热门视频</a></Link>
-      <Link href="/topic"><a className="menu-item">热门话题</a></Link>
-      <Link href="/live"><a className="menu-item">直播</a></Link>
+      {
+        nav.map((item: any, index: number) => <Link key={index} href={item.href} passHref><a className={`menu-item ${router.pathname === item.href ? 'active' : ''}`}>{item.name}</a></Link>)
+      }
     </div>
   );
 };

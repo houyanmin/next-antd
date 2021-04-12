@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { useLocation, useHistory, Link } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
+import Link from 'next/link'
 import { GetStaticProps } from 'next'
 // import QueryString from 'query-string';
 import { Form, Select, Cascader, Tooltip, Pagination, message, Checkbox, Modal, Spin, Empty, Button } from 'antd';
@@ -10,7 +11,7 @@ import { getCategory, getRegion, getList } from '../api/author';
 // import Cookies from 'js-cookie';
 import AuthorItem from './author-item'
 
-import './style.less'
+import './style.module.less'
 
 const Author: React.FC<any> = (props: any): JSX.Element => {
 	const history = useHistory();
@@ -194,10 +195,10 @@ const Author: React.FC<any> = (props: any): JSX.Element => {
 		if(userLevel == -1){
 			message.warning(<span>登录后使用此功能，<a href="/login">去登录</a></span>)
 		} else if(userLevel == 0){
-			message.warning(<span>升级VIP后使用此功能，<Link to="/member/pay">去升级</Link></span>)
+			message.warning(<span>升级VIP后使用此功能，<Link href="/member/pay">去升级</Link></span>)
 		} else if(userLevel == 1){
 			if(page > 10){
-				message.warning(<span>升级VIP后使用此功能，<Link to="/member/pay">去升级</Link></span>)
+				message.warning(<span>升级VIP后使用此功能，<Link href="/member/pay">去升级</Link></span>)
 			} else {
 				document.documentElement.scrollTop = document.body.scrollTop =0;
 				param.page = page;
@@ -216,9 +217,9 @@ const Author: React.FC<any> = (props: any): JSX.Element => {
 
     let TooltipTitle = useMemo(() => {
         if (userLevel == -1) {
-			return <>登录后使用此功能，<Link to="/login">去登录</Link></>
+			return <>登录后使用此功能，<Link href="/login">去登录</Link></>
 		} else {
-			return <>升级VIP后使用此功能，<Link to="/member/pay">去升级</Link></>
+			return <>升级VIP后使用此功能，<Link href="/member/pay">去升级</Link></>
 		}
     },[userLevel])
 
