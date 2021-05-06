@@ -4,11 +4,11 @@ import { NextComponentType } from 'next'
 import { AppContext, AppProps } from 'next/app'
 import { ConfigProvider } from 'antd'
 import { StoreProvider } from '@/stores';
-import "../styles/globals.less";
+import "@/styles/globals.less";
 import 'antd/dist/antd.less'
 import zhCN from 'antd/lib/locale/zh_CN';
-import HeaderComp from "../components/Layout/header";
-import FooterComp from "../components/Layout/footer";
+import HeaderComp from "@/components/Layout/header";
+import FooterComp from "@/components/Layout/footer";
 import "./style.less";
 
 type TAppProps = {
@@ -30,13 +30,12 @@ const AppCom: NextComponentType<
   AppContext,
   ModifiedAppInitialProps<TAppProps>,
   ExtendedAppProps<TProps, TAppProps>
-> = ({ Component, appProps }) => {
+> = ({ Component, appProps, pageProps }) => {
   // redux store init state
   // const history = useHistory();
   // const location = useLocation();
   // const { userStore } = useStore(appProps.initial_redux_state);
   // const {getUserInfo, loginout} = userStore;
-
   const [isLogin, setIsLogin] = useState(false)
   const [userInfo, serUserInfo] = useState(null)
 
@@ -80,7 +79,7 @@ const AppCom: NextComponentType<
         <div className="warp-layout">
           <HeaderComp isLogin={isLogin} {...userInfo}/>
           <div className="warp-layout-content">
-              <Component {...appProps} />
+              <Component {...appProps} {...pageProps} />
           </div>
           <FooterComp />
         </div>

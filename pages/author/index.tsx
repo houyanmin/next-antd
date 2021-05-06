@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
+import Head from 'next/head'
 import { useLocation, useHistory } from 'react-router-dom';
 import Link from 'next/link'
 import { GetStaticProps } from 'next'
@@ -376,6 +377,14 @@ const Author: React.FC<any> = (props: any): JSX.Element => {
 			<Checkbox value="hasShop"><i className="iconfont icon-shangdian"></i> 有开通微信小商店</Checkbox>
 		</Checkbox.Group>;
 	return <div className="layout-content page-author">
+		<Head>
+			<meta charSet="utf-8" />
+			<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			<meta name="description" content="早蝶数据支持微信视频号查找，多维度数据分析，热门视频、话题趋势追踪，热门榜单，挂链分析，视频监测，视频号直播数据分析等功能，助力视频号运营创作。" />
+			<meta name="keywords" content="早蝶,早蝶数据,视频号,视频号数据,视频号数据分析,视频号运营,视频号搜索,视频号监测,视频号直播,视频号点赞,视频10万赞,视频号直播带货,视频号变现,视频号榜单,视频号排行榜" />
+			<title>早蝶数据 - 视频号数据分析平台</title>
+			<link rel="stylesheet" href="/_next/static/css/styles.chunk.css"/>
+		</Head>
 		<PageSearch page="author" keyword={param.keywords} onCallback={onSearchCb} />
 		<div className="page-screen">
 			<div className="screen-box">

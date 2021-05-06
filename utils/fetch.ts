@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
 
 // ⚠️注意：所有的body必须是json对象
-const BASE_URL = '' //"http://localhost:3000";
+const BASE_URL = "http://localhost:3000";
 
 function initRequest(url: string, params:{ [key: string]: any } | undefined = {}, init?: RequestInit): [string, RequestInit] {
   let headers = {}

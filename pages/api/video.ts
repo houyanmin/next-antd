@@ -29,3 +29,4 @@ export function getDetailChart(params?: any): Promise<any> {
         params
     })
 }
+
