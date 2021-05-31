@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useLocalStore } from 'mobx-react-lite';
-import { createStore, TStore } from "./store";
+import { createStore, TStore, store } from "./store";
 
 export const storeContext = React.createContext<TStore | null>(null);
 
@@ -10,7 +10,7 @@ export const StoreProvider = ({children}: any) => {
 };
 
 export const useStore = () => {
-    const store = React.useContext(storeContext);
+    // const store = React.useContext(storeContext);
     if(!store){
         throw new Error('You have forgot to use StoreProvider.');
     }
