@@ -1,0 +1,7 @@
+PORT = 3000
+NODE_ENV= development
+REACT_APP_ENV = development
+REACT_APP_BASE_API = "http://192.168.112.9:9501"
+REACT_APP_BASE_SOCKET = "http://192.168.112.9:4580"
+REACT_APP_COS_BUCKET = "khtuan-assets-dev-1257224991"
+REACT_APP_COS_DOMAIN = "https://assets-dev.khtcdn.cn/"

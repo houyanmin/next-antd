@@ -1,24 +1,23 @@
 import React, {useEffect } from 'react';
 // import emitEv from '@/utils/events';
 import { Avatar, Popover, Button, Divider } from 'antd';
-import { useHistory, NavLink } from 'react-router-dom';
-
+import Link from "next/link";
+import { useRouter } from 'next/router'
 import NavMenu from './sider';
-
 import './style.less'
 
 const Header: React.FC<any> = (props: any): JSX.Element => {
-	let history = useHistory();
+	let router = useRouter();
 	let {isLogin = false} = props;
 	let onLogoTag = () => {
-		history.push('/')
+		router.push('/')
 	}
 
 	useEffect(() => {
 	},[props])
 
 	let handleNavLogin = () => {
-		history.push('/login')
+		router.push('/login')
 	}
 	let handleLogout = () => {
 		// emitEv.emit('event-user-logout')
@@ -29,34 +28,34 @@ const Header: React.FC<any> = (props: any): JSX.Element => {
 			<div className="popover-nikename"><Avatar src={props?.avatar_url} /> {props?.nickname}</div>
 			<div className="popover-level">
 				{props?.teamInfo?.level == 3 ? '企业版' : props?.teamInfo?.level == 2 ? '专业版' : props?.teamInfo?.level == 1 ? '高级版' : '免费版'}
-				{props?.teamInfo?.level == 3 ? (<NavLink to="/member/pay">续费</NavLink>) : null}
-				{props?.teamInfo?.level == 2 ? (<NavLink to="/member/pay">立即升级</NavLink>) : null}
-				{props?.teamInfo?.level == 1 ? (<NavLink to="/member/pay">立即升级</NavLink>) : null}
-				{props?.teamInfo?.level == 0 ? (<NavLink to="/member/pay">开通会员</NavLink>) : null}
+				{props?.teamInfo?.level == 3 ? (<Link href="/member/pay">续费</Link>) : null}
+				{props?.teamInfo?.level == 2 ? (<Link href="/member/pay">立即升级</Link>) : null}
+				{props?.teamInfo?.level == 1 ? (<Link href="/member/pay">立即升级</Link>) : null}
+				{props?.teamInfo?.level == 0 ? (<Link href="/member/pay">开通会员</Link>) : null}
 			</div>
 			<div className="popover-nav">
 				<div className="nav-warp">
 					<i className="iconfont icon-shoucang"></i>
 					<div className="nav-flex">
-						<NavLink className="nav-item" to="/member/collect">视频号收藏</NavLink>
-						<NavLink className="nav-item" to="/member/collect/video">视频收藏</NavLink>
+						<Link href="/member/collect" passHref><a className="nav-item">视频号收藏</a></Link>
+						<Link href="/member/collect/video" passHref><a className="nav-item">视频收藏</a></Link>
 					</div>
 				</div>
 				<div className="nav-warp separate">
 					<div className="nav-flex" style={{ paddingLeft: 28 }}>
-						<NavLink className="nav-item" to="/member/collect/topic">话题收藏</NavLink>
+						<Link href="/member/collect/topic" passHref><a className="nav-item">话题收藏</a></Link>
 					</div>
 				</div>
 				<div className="nav-warp">
 					<i className="iconfont icon-geren"></i>
 					<div className="nav-flex">
-						<NavLink className="nav-item" to="/member">个人中心</NavLink>
-						<NavLink className="nav-item" to="/member/order">我的订单</NavLink>
+						<Link href="/member" passHref><a className="nav-item">个人中心</a></Link>
+						<Link href="/member/order" passHref><a className="nav-item">我的订单</a></Link>
 					</div>
 				</div>
 				{props?.isJoinTeam == 0 ?<div className="nav-warp separate">
 					<div className="nav-flex" style={{ paddingLeft: 28 }}>
-						<NavLink className="nav-item" to="/member/child">子账号管理</NavLink> 
+						<Link href="/member/child" passHref><a className="nav-item">子账号管理</a></Link> 
 					</div>
 				</div>: null}
 			</div>
@@ -80,7 +79,7 @@ const Header: React.FC<any> = (props: any): JSX.Element => {
                 </Popover>
 				<Divider type="vertical" />
 				{isLogin ? <>
-					<div className={`header-level level-${props?.teamInfo?.level}`} onClick={() => history.push('/member/pay')}>
+					<div className={`header-level level-${props?.teamInfo?.level}`} onClick={() => router.push('/member/pay')}>
 						{props?.teamInfo?.level == 0 ? '免费版' : null}
 						{props?.teamInfo?.level == 1 ? '高级版' : null}
 						{props?.teamInfo?.level == 2 ? '专业版' : null}

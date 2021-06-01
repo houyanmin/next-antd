@@ -8,7 +8,10 @@ type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
 const BASE_URL = "http://localhost:3000";
 
 function initRequest(url: string, params:{ [key: string]: any } | undefined = {}, init?: RequestInit): [string, RequestInit] {
-  let headers = {}
+  let headers = {
+    'Access-Control-Expose-Headers': '*',
+    'Access-Control-Allow-Origin': '*'
+  }
 
   // 判断请求是不是相对路径
   if (!/^http[s]?:|^\/\//.test(url)) {
@@ -57,9 +60,16 @@ async function fetch(rquest: IFetchRquest): Promise<any> {
   })
 
   try {
+    let resHeader = {
+      headers: {}
+    }
     const res = await isomorphicFetch(url, init)
+    res.headers.forEach((val, key) => {
+      resHeader.headers[key] = val;
+    })
     // 判断数据是不是json
-    return res.json()
+    let data = await res.json();
+    return Object.assign(resHeader,data)
   } catch (error) {
     return Promise.reject(error)
   }

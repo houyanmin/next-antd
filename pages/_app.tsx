@@ -40,49 +40,42 @@ const AppCom: NextComponentType<
 
   let [isLogin, setIsLogin] = useState(false)
   let [userInfo, serUserInfo] = useState(null)
-
-  useEffect(() => {
-    getUserInfo().then(res=>{
-      console.log(res);
-    });
-    
-  })
-
   
 
-  // useEffect(() => {
-  //   const token = Cookies.get('token');
-  //   if(token) {
-  //     getUser()
-  //   }
-  //   emitEv.on('event-user-info', () => {
-  //     getUser()
-  //   })
-  //   emitEv.on('event-user-logout', async () => {
-  //     await loginout()
-  //     Cookies.remove('token', { path: '/',domain: process.env.REACT_APP_BASE_DOMAIN });
-  //     serUserInfo(null)
-  //     setIsLogin(false)
-  //     router.push('/')
-  //   })
-  //   return () => {
-  //     emitEv.removeAllListeners('event-user-info')
-  //     emitEv.removeAllListeners('event-user-logout')
-  //   }
-  // },[])
+  useEffect(() => {
+    const token = Cookies.get('idToken');
+    console.log(document.cookie)
+    if(token) {
+      getUser()
+    }
+    emitEv.on('event-user-info', () => {
+      getUser()
+    })
+    emitEv.on('event-user-logout', async () => {
+      await loginout()
+      Cookies.remove('token', { path: '/',domain: process.env.REACT_APP_BASE_DOMAIN });
+      serUserInfo(null)
+      setIsLogin(false)
+      router.push('/')
+    })
+    return () => {
+      emitEv.removeAllListeners('event-user-info')
+      emitEv.removeAllListeners('event-user-logout')
+    }
+  },[])
 
-  // useEffect(() => {
-  //   document.documentElement.scrollTop = document.body.scrollTop =0;
-  // }, []);
+  useEffect(() => {
+    document.documentElement.scrollTop = document.body.scrollTop =0;
+  }, []);
 
-  // let getUser = async() => {
-  //   let info = await getUserInfo();
-  //   if(info.mobile == '' || info.mobile == null || info.mobile == undefined){
-  //     emitEv.emit('event-mobile-modal')
-  //   }
-  //   setIsLogin(true)
-  //   serUserInfo(info)
-  // }
+  let getUser = async() => {
+    let info = await getUserInfo();
+    if(info.mobile == '' || info.mobile == null || info.mobile == undefined){
+      emitEv.emit('event-mobile-modal')
+    }
+    setIsLogin(true)
+    serUserInfo(info)
+  }
 
   return (
     <ConfigProvider locale={zhCN}>
@@ -102,7 +95,6 @@ const AppCom: NextComponentType<
 async function appGetInitialProps(): Promise<
   ModifiedAppInitialProps<TAppProps>
 > {
-
   return {
     appProps: {
       initial_redux_state: {
