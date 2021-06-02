@@ -50,7 +50,7 @@ export type IFetchRquest = {
  *
  * @returns fetch json data
  */
-async function fetch(rquest: IFetchRquest): Promise<any> {
+async function fetch<T>(rquest: IFetchRquest): Promise<T> {
   const [url, init] = initRequest(rquest.url, rquest.params,{
     ...rquest.init,
     method: rquest.method || 'GET',
