@@ -10,7 +10,7 @@ import { getQrcode } from '@/pages/api/user';
 import emitEv from '@/utils/events';
 import { getCosConfig } from '@/utils/util';
 import Head from 'next/head'
-import './Home.module.less'
+import './login.module.less'
 
 
 const FormItem = Form.Item

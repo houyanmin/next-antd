@@ -1,5 +1,5 @@
 import React, {useEffect } from 'react';
-// import emitEv from '@/utils/events';
+import emitEv from '@/utils/events';
 import { Avatar, Popover, Button, Divider } from 'antd';
 import Link from "next/link";
 import { useRouter } from 'next/router'
@@ -20,7 +20,7 @@ const Header: React.FC<any> = (props: any): JSX.Element => {
 		router.push('/login')
 	}
 	let handleLogout = () => {
-		// emitEv.emit('event-user-logout')
+		emitEv.emit('event-user-logout')
 	}
 
 	const content = (

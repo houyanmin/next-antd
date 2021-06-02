@@ -43,8 +43,7 @@ const AppCom: NextComponentType<
   
 
   useEffect(() => {
-    const token = Cookies.get('idToken');
-    console.log(document.cookie)
+    const token = Cookies.get('token');
     if(token) {
       getUser()
     }

@@ -19,9 +19,7 @@ function initRequest(url: string, params:{ [key: string]: any } | undefined = {}
   }
   // if (init && init.headers) {
 
-    // const token = Cookies.get('token');
-// console.log(token)
-const token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJkZWZhdWx0XzE3NSIsImlhdCI6MTYyMTI0NjgxNCwibmJmIjoxNjIxMjQ2ODE0LCJleHAiOjE2MjM4Mzg4MTQsInVpZCI6MTc1LCJqd3Rfc2NlbmUiOiJkZWZhdWx0In0.rbfz2GyTnKr--ZBTmXWfZ9IflgW0tSxoLfzA59SU9Zs"
+    const token = Cookies.get('token');
 
     headers = Object.assign(
       token ? {Authorization: `Bearer ${token ? token : ''}`, 'Content-Type': 'application/json;charset=utf-8'} : {},
