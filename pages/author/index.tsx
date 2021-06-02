@@ -12,7 +12,7 @@ import { getCategory, getRegion, getList } from '../api/author';
 // import Cookies from 'js-cookie';
 import AuthorItem from './author-item'
 
-import './style.module.less'
+import './style.less'
 
 const Author: React.FC<any> = (props: any): JSX.Element => {
 	const history = useHistory();
