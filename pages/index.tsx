@@ -8,7 +8,7 @@ import { getList as rankLink } from '@/pages/api/rank'
 import { getList as videoLink } from '@/pages/api/video';
 import { getTopicList } from '@/pages/api/topic';
 import moment from 'moment'
-import './Home.module.less'
+import './Home.less'
 
 const Home: React.FC<any> = (props: any): JSX.Element => {
 	const { net = [], science = [], publicity = [], video = [], topic = [] } = props.data;

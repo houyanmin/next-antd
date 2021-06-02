@@ -14,7 +14,7 @@ module.exports = withLess(
     // cssModules: true,
     lessLoaderOptions:{
       javascriptEnabled: true,
-      modifyVars: themeVariables // make your antd custom effective
+      // modifyVars: themeVariables // make your antd custom effective
     },
     webpack: (config) => {
       config.resolve.alias={

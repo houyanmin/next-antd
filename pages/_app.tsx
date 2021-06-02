@@ -5,7 +5,7 @@ import { AppContext, AppProps } from 'next/app'
 import { ConfigProvider } from 'antd'
 import { StoreProvider, useStore } from '@/stores';
 import "@/styles/globals.less";
-import 'antd/dist/antd.less'
+// import 'antd/dist/antd.less'
 import zhCN from 'antd/lib/locale/zh_CN';
 import HeaderComp from "@/components/Layout/header";
 import FooterComp from "@/components/Layout/footer";
